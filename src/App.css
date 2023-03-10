@@ -1,0 +1,16 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: scroll;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+#root{
+    height: 100%;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}

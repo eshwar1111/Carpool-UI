@@ -1,0 +1,49 @@
+.book-ride{
+    background-color: purple;
+    cursor: pointer;
+  }
+  
+  .offer-ride{
+    background-color: orange;
+    cursor: pointer;
+  }
+  
+  .options{
+    margin-top: 2rem;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .option-style{
+    height: 10rem;
+    width: 17rem;
+    border-radius: 5%;
+    text-align: center;
+    padding: 4rem;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.35rem;
+    font-weight: 600;
+  }
+
+  .option-style:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  
+  
+  a:hover{
+    color: white;
+  }
+  
+  .home-heading{
+    margin-top: 1rem;
+    margin-left:31rem;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .home-img{
+    height:330px;
+    width:100%;
+    margin-top: 0.5rem;
+  }

@@ -1,0 +1,86 @@
+
+.card11{
+    background-color: rgb(255, 255, 255);
+    width: 24rem;
+    z-index: 2;
+    cursor: pointer;
+    margin: 15px;
+   }
+
+
+  .circle{
+    font-size: 8px;
+    color: lightgray;
+  }
+  
+ .icon li{
+    float: left;
+ }
+  
+  .icon{
+    margin-top:30px;
+    padding:0;
+    align-items: center;
+    display: contents;
+  }
+  
+  
+  .card1-body{
+    
+    background-color: white;
+    border-radius: 10px;
+    padding: 7px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+
+  .card1-body:hover{
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  }
+  
+  .matched-offer{
+    grid-template-columns: repeat(3,7.8rem);
+    align-items: center;
+  }
+  .start-circle{
+    font-size: 14px;
+    color: purple;
+  }
+.end-geo{
+    color: purple;
+}
+
+  .card11 label{
+    font-size: 10px;
+    color: grey;
+    font-weight: bold;
+  }
+  
+  h4{
+    font-size: 15px;
+  }
+  
+  li{
+    display: inline;
+  }
+  
+  
+  .card1-display {
+    width: 24rem;
+    height: 234px;
+    perspective: 600px;
+
+  }
+  
+  .card-display:hover{
+    background-color: white;
+  }
+
+  .card1-title{
+    
+    font-size: 27px;
+    margin-bottom: 16px;
+  }
+
+  .card1-body{
+    height: 187px;
+  }

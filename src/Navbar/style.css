@@ -1,0 +1,43 @@
+
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: flex-end;
+    justify-content: space-between;
+}
+
+.nav .username{
+    float: right;
+}
+.dropdown-toggle{
+  cursor: pointer;
+}
+
+.dropdown-item{
+    color: grey;
+  }
+  .dropdown-item:hover{
+
+    color: white;
+    background-color:purple;
+  }
+
+  .menu{
+    min-width: 0;
+    width: 120px;
+    text-align: center;
+    cursor: pointer;
+  
+  }
+  .logo{
+    margin:1rem -4.5rem;
+    cursor: pointer;
+  
+  }
+
+  .nav-name{
+    font-weight: bold;
+    font-size: large;
+  }

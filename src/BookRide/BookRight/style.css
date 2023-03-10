@@ -1,0 +1,19 @@
+.bookrideright-container{
+    width: 65%;
+    margin-left: 20px;
+}
+
+.rides-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.bookrideright-container >h2{
+    font-size:30px;
+    color: purple;
+    margin-top: 20px;
+
+
+    font-weight: 700;
+}
