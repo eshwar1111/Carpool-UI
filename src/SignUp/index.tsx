@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import {useForm} from "react-hook-form"
 import Logo from "../assets/logo.png"
 import BgImg from "../assets/img1.png"
@@ -14,6 +14,7 @@ const SignUp:React.FC=()=>{
         await SignUpUser(data)
         
     }
+    const navigate=useNavigate()
 
     const {handleSubmit,register}=useForm()
 
@@ -34,6 +35,7 @@ const SignUp:React.FC=()=>{
             else{
                 alert("successfully signedUp!!")
             }
+            navigate("/login")
         }
         catch(error){
             console.log(error)
@@ -57,16 +59,16 @@ const SignUp:React.FC=()=>{
             <form id="signup-form" onSubmit={handleSubmit(CheckSignUp)}>
                 <div className="form-floating mb-3">
                     <input className="form-control"  id="floatingInput" type="text" {...register("username")} name="username" required placeholder="username"/>
-                    <label htmlFor="floatingInput">username</label>
+                    <label htmlFor="floatingInput">Enter Username</label>
                 </div>
                 
                 <div className="form-floating mb-3">
-                    <input className="form-control" id="floatingPassword" type="text" {...register("password")} name="password" required placeholder="password"/>
-                    <label htmlFor="floatingPassword">password</label>
+                    <input className="form-control" id="floatingPassword" type="password" {...register("password")} name="password" required placeholder="password"/>
+                    <label htmlFor="floatingPassword">Enter Password</label>
                 </div>
                 <div className="form-floating mb-3">
-                    <input className="form-control" id="floatingPassword"  type="text" {...register("confirmpassword")} name="confirmpassword" placeholder="confirmpassword" required/>
-                    <label htmlFor="floatingPassword">confirmPassword</label>
+                    <input className="form-control" id="floatingPassword"  type="password" {...register("confirmpassword")} name="confirmpassword" placeholder="confirmpassword" required/>
+                    <label htmlFor="floatingPassword">Confirm Password</label>
                 </div>
                 <button className="submit-signup-btn " type="submit">SIGNUP</button>
             </form>

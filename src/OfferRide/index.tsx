@@ -5,6 +5,7 @@ import {useForm} from "react-hook-form"
 import "./style.css"
 import { useNavigate } from "react-router-dom";
 import AddStopsInput from "./AddStopsInput";
+import OfferPopUp from "./OfferPopUp";
 
 const OfferRide:React.FC=()=>{
 
@@ -13,6 +14,12 @@ const [inputFields, setInputFields] = useState([""]);
 const [showform2,setform2]=useState(false)
 
 const { register,handleSubmit}=useForm()
+
+const [isOpen,setOfferPopup]=useState(false)
+
+const togglePopUp=()=>{
+    setOfferPopup(!isOpen)
+}
  
 const addInputField = ()=>{
         setInputFields([...inputFields, "" ])
@@ -63,7 +70,7 @@ const onSubmit=async (data:any)=>{
         var ok=await response.json()
         console.log(ok)
         if(ok){
-            navigate("/home")
+            setOfferPopup(true)
         }
         
     }
@@ -78,6 +85,7 @@ const onSubmit=async (data:any)=>{
         
         <div className="offerride-page">
             <Navbar/>
+            {isOpen&&<OfferPopUp togglePopUp={togglePopUp}/>}
             <div className="offerride-container">
                 <form onSubmit={handleSubmit(onSubmit)}  className="form-control">
                     <div className="offerride-form-container">
@@ -105,11 +113,11 @@ const onSubmit=async (data:any)=>{
                                     <span className="time-option">5am-9am</span>
                                 </label>
                                 <label>
-                                    <input type="radio" {...register("time")}name="time" value={"1-2"} />
+                                    <input type="radio" {...register("time")}name="time" value={"9-12"} />
                                     <span className="time-option">9am-12am</span>
                                 </label>
                                 <label>
-                                    <input type="radio" {...register("time")}name="time" value={"12-3"}  />
+                                    <input type="radio"  {...register("time")}name="time" value={"12-3"}  />
                                     <span className="time-option">12am-3pm</span>
                                 </label>
                                 <label>

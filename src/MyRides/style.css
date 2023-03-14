@@ -22,6 +22,14 @@
     align-content: center;
 }
 
+.booked-rides{
+    width: 500px;
+}
+
+.offered-rides{
+    width: 500px;
+}
+
 .booked-rides>h1{
     font-size: 17px;
     border: solid;
@@ -64,6 +72,7 @@
 }
 
 .myrides-page{
+    min-height: 790px;
     background-image: url("../assets/img4.png");
     background-repeat: no-repeat;
     background-attachment: fixed;

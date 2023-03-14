@@ -15,7 +15,7 @@ const BookRideRight:React.FC<BookRideRightProps>=({rides,bookTheRide})=>{
         return(
             <div className="bookrideright-container">
             <h2>Your Matches</h2>
-            <div className="rides-container">! Sorry no rides available, please enter your journey details.</div>
+            <div className="rides-container">! Sorry no rides available, please enter your ride details.</div>
         </div>
         )
     }

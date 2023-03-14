@@ -5,10 +5,13 @@ import BookRideRight from "./BookRight";
 import Navbar from "../Navbar";
 import { useNavigate } from "react-router-dom";
 import "./style.css"
+import PopUp from "./PopUp";
 
 
 const BookRide:React.FC=()=>{
     const [rides,setrides]=useState([])
+
+    
 
     const updateRides=(rides:any)=>{
         setrides(rides)
@@ -27,7 +30,6 @@ const BookRide:React.FC=()=>{
             var ok=await response.json()
             console.log(ok)
             if(ok){
-                alert("successfully booked")
                 navigate("/home")
             }
             
@@ -41,7 +43,6 @@ const BookRide:React.FC=()=>{
         <div className="bookride-main">
             <Navbar/>
             <div className="bookride-container">
-
             <BookRideLeft updateRides={updateRides}/>
             <BookRideRight rides={rides} bookTheRide={bookTheRide}/> 
             </div>

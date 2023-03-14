@@ -69,7 +69,7 @@ const BookRideLeft:React.FC<BookRideLeftProps>=({updateRides})=>{
                         <span className="time-option">5am-9am</span>
                     </label>
                     <label>
-                        <input type="radio" {...register("time")}name="time" value={"1-2"} />
+                        <input type="radio" {...register("time")}name="time" value={"9-12"} />
                         <span className="time-option">9am-12am</span>
                     </label>
                     <label>

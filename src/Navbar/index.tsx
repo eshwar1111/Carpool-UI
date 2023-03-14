@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Navbar:React.FC=()=>{
     const name:string=localStorage.getItem("username")||"username"
     const navigate=useNavigate()
+    
     return(
         <div>
             <nav className="navbar ">
@@ -24,7 +25,7 @@ const Navbar:React.FC=()=>{
                     <ul className="dropdown-menu menu">
                         <li><Link className="dropdown-item" to="/home">Profile</Link></li>
                         <li><Link className="dropdown-item" to="/myrides">My Rides</Link></li>
-                        <li><Link className="dropdown-item" to="/login" >LogOut</Link></li>
+                        <li><Link className="dropdown-item" to="/login" onClick={()=>{localStorage.clear()}} >LogOut</Link></li>
                     </ul>
                 </div>
                 </div>

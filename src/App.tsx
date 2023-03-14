@@ -7,18 +7,22 @@ import Home from './Home';
 import OfferRide from './OfferRide';
 import MyRides from './MyRides';
 import './App.css'
+import ProtectedRoute from './Utils/ProtectedRoute';
 
 function App() {
   
   return (
     <Router>
       <Routes><Route path='/' element={<Navigate to="/login" replace={true}/>}></Route>
+      <Route element={<ProtectedRoute/>}>
+        <Route path='/bookride' element={<BookRide/>}/>
+        <Route path='/offerride' element={<OfferRide/>}/>
+        <Route path="/home" element={<Home/>}/>
+        <Route path='/myrides' element={<MyRides/>}/>
+      </Route>
+
       <Route path="/login" element={<Login/>} />
       <Route path="/signup" element={<SignUp/>}/>
-      <Route path='/bookride' element={<BookRide/>}/>
-      <Route path='/offerride' element={<OfferRide/>}/>
-      <Route path="/home" element={<Home/>}/>
-      <Route path='/myrides' element={<MyRides/>}/>
       </Routes>
     </Router>
   )

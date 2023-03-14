@@ -17,7 +17,6 @@ const Login:React.FC=()=>{
     const {handleSubmit ,register}=useForm()
     const UserExists=async(body:any)=>{
       const url="https://localhost:7192/api/authentication/login"
-      console.log("this is login credits :- ")
       console.log(JSON.stringify(body))
       try{
         const response=await fetch(url,{method:"POST",
@@ -28,7 +27,6 @@ const Login:React.FC=()=>{
         body:JSON.stringify(body)
         });
         const data=await response.text();
-        console.log("responsedata :- "+ data)
         if(data!="false"){
           localStorage.setItem("token",data)
         }

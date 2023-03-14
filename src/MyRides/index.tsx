@@ -46,13 +46,15 @@ const MyRides:React.FC=()=>{
         getOfferedRides()
 
     },[]);
-
+    
     return(
      <div className="myrides-page">
         <Navbar/>
         <div className="myrides-container">
         <div className="booked-rides">
             <h1>Booked Rides</h1>
+            
+            {bookedRides.length==0&& <div>---  you haven't booked any rides</div> }
             <div className="ride-container">
                 {bookedRides.map((ride: any)=>{
                     return(
@@ -63,8 +65,11 @@ const MyRides:React.FC=()=>{
         </div>
         <div className="offered-rides">
             <h1>Offered Rides</h1>
+            {offeredRides.length==0&& <div>---  you haven't offered any rides</div> }
             <div className="ride-container">
+                
                 {offeredRides.map((ride: any)=>{
+
                     return(
                         <HistoryideTile Ride={ride} flag={false}/>
                     )

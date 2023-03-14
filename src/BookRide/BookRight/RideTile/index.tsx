@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import IRide from "../../../config/IRide";
 import "./style.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as Icon from 'react-bootstrap-icons';
 import { ArrowRight } from "react-bootstrap-icons";
+import PopUp from "../../PopUp";
 
 interface RideTileProps{
     Ride:any
@@ -13,8 +14,15 @@ interface RideTileProps{
 const RideTile:React.FC<RideTileProps>=({Ride,bookTheRide})=>{
     let date: string=Ride.date;
     var newDate:string=date.substring(0,10)
+    const [isOpen,setPopUp]=useState(false)
+
+    const togglePopUp=()=>{
+        setPopUp(!isOpen)
+    }
+
     return(
-            <div className="card11" onClick={(e)=>{e.preventDefault(), bookTheRide(Ride)}}>
+        <div className="card11" onClick={(e)=>{e.preventDefault(), togglePopUp()}}>
+                {isOpen&&<PopUp togglePopUp={togglePopUp} bookTheRide={bookTheRide} ride={Ride}/>}
                 <div className="card1-body">
                     <div className="d-flex">
                         <h5 className="card1-title">{Ride.offeredBy}</h5>
