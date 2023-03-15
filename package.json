@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "baseUrl":"https://localhost:7192/api/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

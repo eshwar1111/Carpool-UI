@@ -31,26 +31,7 @@ const Navbar:React.FC=()=>{
                 </div>
             
             </div>
-            {/* <nav class="navbar navbar-light">
-            <div class="container-fluid">
-                <img class="navbar-brand logo" src="../../assets/images/logo.png">
-                <div class="user-login d-flex">
-                <h1 class="username">{{username}}</h1>
 
-                <div class="dropdown">
-
-                    <img src="../../../assets/images/user-profile-icon-free-vector.jpg" alt="user-image" class="user-image dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-
-                    <ul class="dropdown-menu dropdown-menu-end menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" >Profile</a></li>
-                    <li><a class="dropdown-item" routerLink="/welcome" routerLinkActive="active-link">Home</a></li>
-                    <li><a class="dropdown-item" routerLink="/my-rides" routerLinkActive="active-link">My Rides</a></li>
-                    <li><a class="dropdown-item" routerLink="/login">Logout</a></li>
-                    </ul>
-                </div>
-                </div>
-            </div>
-            </nav> */}
         </nav>
         </div>
     )

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar";
 import HistoryideTile from "./HistoryRideTile";
 import "./style.css"
+import {baseUrl} from "../../package.json"
 
 
 const MyRides:React.FC=()=>{
@@ -11,7 +12,7 @@ const MyRides:React.FC=()=>{
 
     const getBookedRides=async()=>{
 
-        const url="https://localhost:7192/api/history/BookedRides?UserId="+localStorage.getItem("userid")
+        const url=baseUrl+"history/BookedRides?UserId="+localStorage.getItem("userid")
         try{
             const response=await fetch(url)
             const ok=await response.json()
@@ -27,7 +28,7 @@ const MyRides:React.FC=()=>{
     }
 
     const  getOfferedRides=async()=>{
-        const url="https://localhost:7192/api/history/OfferedRides?UserId="+localStorage.getItem("userid")
+        const url=baseUrl+"history/OfferedRides?UserId="+localStorage.getItem("userid")
         try{
             const response=await fetch(url)
            

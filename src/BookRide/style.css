@@ -6,7 +6,7 @@
 }
 
 .bookride-main{
-    height: 45rem;
+    height: 100vh;
     background-image: url("../assets/img4.png");
     background-repeat: no-repeat;
     background-attachment: fixed;

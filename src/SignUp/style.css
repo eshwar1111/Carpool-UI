@@ -36,3 +36,11 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }
+
+.valid-details{
+    color: red;
+}
+
+.signed-details{
+    color: green;
+}

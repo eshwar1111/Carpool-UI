@@ -21,9 +21,6 @@ const PopUp:React.FC<PopUpProps>=({togglePopUp,ride,bookTheRide})=>{
             <button className="no-btn"  onClick={(e)=>{e.preventDefault,togglePopUp}}>no</button>
             </div>
             </div>
-
-
-
         </div>
     )
 }

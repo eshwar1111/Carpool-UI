@@ -6,6 +6,7 @@ import "./style.css"
 import { useNavigate } from "react-router-dom";
 import AddStopsInput from "./AddStopsInput";
 import OfferPopUp from "./OfferPopUp";
+import {baseUrl} from "../../package.json"
 
 const OfferRide:React.FC=()=>{
 
@@ -58,7 +59,7 @@ const onSubmit=async (data:any)=>{
 
    }
    const OfferRide=async(body:any)=>{
-    const url="https://localhost:7192/api/offerride?UserId="+localStorage.getItem("userid") || "1"
+    const url=baseUrl+"offerride?UserId="+localStorage.getItem("userid") || "1"
     try{
         const response=await fetch(url,{method:"POST",
         headers: {
@@ -148,7 +149,7 @@ const onSubmit=async (data:any)=>{
                                         return(
                                             <div className="stops">
                                             <label htmlFor="">stop {index+1} :</label>
-                                            <input type="text" className="input-offerride" name="stop" value={inputFields[index]} onChange={(e)=>{handleChange(index,e)}} required/>
+                                            <input  type="text" className="input-offerride" name="stop" value={inputFields[index]} onChange={(e)=>{handleChange(index,e)}} required/>
                                             </div>
                                         )
                                     })}

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { json, Link } from "react-router-dom"
 import ILogin from "../config/ILogin"
 import { useNavigate } from "react-router-dom"
@@ -12,11 +12,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./style.css"
 import BgImg2 from '../assets/img2.png'
 
+import {baseUrl} from "../../package.json"
+
 
 const Login:React.FC=()=>{
     const {handleSubmit ,register}=useForm()
+
+    const [IsExceptionOpen,setExecption]=useState(false)
+
     const UserExists=async(body:any)=>{
-      const url="https://localhost:7192/api/authentication/login"
+      const url= baseUrl+"authentication/login"
       console.log(JSON.stringify(body))
       try{
         const response=await fetch(url,{method:"POST",
@@ -55,7 +60,7 @@ const Login:React.FC=()=>{
           navigate("/home")
         } 
         else{
-          alert("enter valid details")
+          setExecption(true)
         }
     }
     
@@ -86,6 +91,7 @@ const Login:React.FC=()=>{
                 <input type="password" className="form-control" id="floatingPassword"{...register("password")} name="password" placeholder="Password" required/>
                 <label htmlFor="floatingPassword">Enter password</label>
               </div>
+              {IsExceptionOpen&&<p className="vaild-details">! Enter Valid Details</p>}
                 <button className="submit-btn" type="submit" >Submit</button>
                 
             </form>

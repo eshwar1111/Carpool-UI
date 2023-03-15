@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import {useForm} from "react-hook-form"
 import Logo from "../assets/logo.png"
@@ -6,21 +6,27 @@ import BgImg from "../assets/img1.png"
 import BgImg2 from "../assets/img2.png"
 import "./style.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {baseUrl} from "../../package.json"
 
 const SignUp:React.FC=()=>{
     const CheckSignUp=async (data:any)=>{
-        // const form:any=document.querySelector("form")
-        // const data=Object.fromEntries(new FormData(form).entries())
         await SignUpUser(data)
-        
     }
+
+    const [isExceptionOpen,setException]=useState(false)
+
+    const [isSignedUp,setSignedUp]=useState(false)
+
+
+
+
     const navigate=useNavigate()
 
     const {handleSubmit,register}=useForm()
 
     const SignUpUser=async(body:any)=>{
         console.log(JSON.stringify(body))
-        const url="https://localhost:7192/api/authentication/signup"
+        const url=baseUrl+"authentication/signup"
         try{
             const response=await fetch(url,{method:"POST",
             headers: {
@@ -30,12 +36,14 @@ const SignUp:React.FC=()=>{
             body:JSON.stringify(body)
             })
             if(response.status==400){
-                alert("Enter Valid Details")
+                setException(true)
+                setSignedUp(false)
             }
             else{
-                alert("successfully signedUp!!")
+                setException(false)
+                setSignedUp(true)
+
             }
-            navigate("/login")
         }
         catch(error){
             console.log(error)
@@ -70,8 +78,11 @@ const SignUp:React.FC=()=>{
                     <input className="form-control" id="floatingPassword"  type="password" {...register("confirmpassword")} name="confirmpassword" placeholder="confirmpassword" required/>
                     <label htmlFor="floatingPassword">Confirm Password</label>
                 </div>
+                {isExceptionOpen &&<p className="valid-details">!Enter Valid Details</p>}
+                {isSignedUp &&<p className="signed-details">Signed Up Successfully</p>}
                 <button className="submit-signup-btn " type="submit">SIGNUP</button>
             </form>
+            
             <div>
                 <p className="sub-para">Already a member?<span><Link className="signup-link" to="/login"> LOGIN</Link></span></p>
             </div>
