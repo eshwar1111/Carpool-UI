@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { json, Link } from "react-router-dom"
 import ILogin from "../config/ILogin"
 import { useNavigate } from "react-router-dom"
-import Navbar from "../Navbar"
 import jwt from 'jwt-decode'
 import './style.css'
 import { useForm } from "react-hook-form";
@@ -46,11 +45,7 @@ const Login:React.FC=()=>{
     const navigate=useNavigate()
 
     const CheckLogin=async (data:any)=>{
-        // const form:any=document.querySelector("form")
-        // const data=Object.fromEntries(new FormData(form).entries())
         await UserExists(data)
-
-        console.log("tokennnn  : - "+localStorage.getItem("token"))
         if(localStorage.getItem("token")!="null"){
           const token=localStorage.getItem("token")
           const credentials:any=jwt(token || "")

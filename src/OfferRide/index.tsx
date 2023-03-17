@@ -14,7 +14,7 @@ const [inputFields, setInputFields] = useState([""]);
 
 const [showform2,setform2]=useState(false)
 
-const { register,handleSubmit}=useForm()
+const { register , handleSubmit}=useForm()
 
 const [isOpen,setOfferPopup]=useState(false)
 
@@ -172,10 +172,6 @@ const onSubmit=async (data:any)=>{
                                             </label>
                                         </div>
                                     </div>
-                                    {/* <div className="col">
-                                        <label htmlFor="">Availableseats</label>     
-                                        <input type="number" className="form-control" {...register("availableSeats")} name="availableSeats" />
-                                    </div> */}
                                     <div className="price-div">
                                         <label htmlFor="">Price</label>
                                         <input type="number" className="input-offerride" {...register("price")} name="price" required/>

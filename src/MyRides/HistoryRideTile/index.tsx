@@ -10,6 +10,7 @@ interface HistoryRideTileProps{
 const HistoryideTile:React.FC<HistoryRideTileProps>=({Ride,flag})=>{
 
         var name:string="";
+        
         if(flag){
             name=Ride.offeredBy;
         }

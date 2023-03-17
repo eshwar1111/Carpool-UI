@@ -17,9 +17,6 @@ const SignUp:React.FC=()=>{
 
     const [isSignedUp,setSignedUp]=useState(false)
 
-
-
-
     const navigate=useNavigate()
 
     const {handleSubmit,register}=useForm()
@@ -42,7 +39,6 @@ const SignUp:React.FC=()=>{
             else{
                 setException(false)
                 setSignedUp(true)
-
             }
         }
         catch(error){

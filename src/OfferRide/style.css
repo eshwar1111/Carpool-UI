@@ -112,6 +112,7 @@ input, label{
     align-items: center;
     cursor: pointer;
 }
+
 .seat-container>label> input[name="availableSeats"]{
     display: none;
 }

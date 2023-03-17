@@ -2,13 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css"
 
-
 interface OfferPopUpProps{
     togglePopUp:()=>void
 }
 
 
 const OfferPopUp:React.FC<OfferPopUpProps>=({togglePopUp})=>{
+
     const navigate=useNavigate()
     
     return(
@@ -23,7 +23,8 @@ const OfferPopUp:React.FC<OfferPopUpProps>=({togglePopUp})=>{
             </div>
         </div>
     )
-
+    
 }
+
 
 export default OfferPopUp

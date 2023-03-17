@@ -17,11 +17,9 @@ const MyRides:React.FC=()=>{
             const response=await fetch(url)
             const ok=await response.json()
             setBookedRides(ok)
-            console.log(ok)
             return ok
         }
         catch(error){
-            console.log(error)
             return []
         }
 
@@ -37,7 +35,6 @@ const MyRides:React.FC=()=>{
             return ok
         }
         catch(error){
-            console.log(error)
             return []
         }
 
@@ -45,7 +42,6 @@ const MyRides:React.FC=()=>{
     useEffect(()=>{
         getBookedRides()
         getOfferedRides()
-
     },[]);
     
     return(
@@ -68,9 +64,7 @@ const MyRides:React.FC=()=>{
             <h1>Offered Rides</h1>
             {offeredRides.length==0&& <div>---  you haven't offered any rides</div> }
             <div className="ride-container">
-                
                 {offeredRides.map((ride: any)=>{
-
                     return(
                         <HistoryideTile Ride={ride} flag={false}/>
                     )

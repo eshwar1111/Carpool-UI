@@ -6,19 +6,20 @@ import Navbar from "../Navbar";
 import { useNavigate } from "react-router-dom";
 import "./style.css"
 import PopUp from "./PopUp";
+import {baseUrl} from "../../package.json"
 
 
 const BookRide:React.FC=()=>{
     const [rides,setrides]=useState([])
 
-    
-
     const updateRides=(rides:any)=>{
         setrides(rides)
     }
+
     const navigate=useNavigate()
+
     const bookTheRide=async(ride:any)=>{
-        const url="https://localhost:7192/api/bookRide/bookTheRide?UserId="+localStorage.getItem("userid") || "1"
+        const url=baseUrl+"bookRide/bookTheRide?UserId="+localStorage.getItem("userid") || "1"
         try{
             const response=await fetch(url,{method:"POST",
             headers: {
@@ -32,7 +33,6 @@ const BookRide:React.FC=()=>{
             if(ok){
                 navigate("/home")
             }
-            
         }
         catch(error){
             console.log(error)
