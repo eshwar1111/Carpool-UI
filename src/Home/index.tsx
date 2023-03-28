@@ -10,16 +10,15 @@ const Home:React.FC=()=>{
     
     const name:string=localStorage.getItem("username")||"username"
     return(
-        <div>
+        <div className="home-page">
             <Navbar/>
-            <h1 className="home-heading">Hey {name}!</h1>
-            <div className="options d-flex">
-
-            <a className="book-ride option-style" onClick={()=>{navigate("/bookride")}}>Book a ride</a>
-            <a className="offer-ride option-style" onClick={()=>{navigate("/offerride")}}>Offer a ride</a>
-
+            <div>
+                <h1 className="home-heading">Hey {name}!</h1>
+                <div className="options d-flex">
+                    <a className="book-ride option-style" onClick={()=>{navigate("/bookride")}}>Book a ride</a>
+                    <a className="offer-ride option-style" onClick={()=>{navigate("/offerride")}}>Offer a ride</a>
+                </div>
             </div>
-            <img className="home-img" src={BgImg} alt="" />
         </div>
     )
 }

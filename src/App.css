@@ -4,8 +4,10 @@ body{
     padding: 0;
     height: 100%;
     overflow: scroll;
-    font-family:Verdana, Geneva, Tahoma, sans-serif
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    width: 100%;
 }
+
 
 #root{
     height: 100%;

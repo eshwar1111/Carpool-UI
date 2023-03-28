@@ -32,7 +32,7 @@
   
   }
   .logo{
-    margin:1rem -4.5rem;
+    margin:1rem 0rem;
     cursor: pointer;
   
   }
@@ -41,3 +41,53 @@
     font-weight: bold;
     font-size: large;
   }
+
+  .dropdown-center{
+    display: flex;
+    align-items: center;
+  }
+
+  .profile-img{
+    margin-left: 5px;
+    margin-right: 15px;
+    border-radius: 50%;
+    height: 40px;
+  }
+
+  .profile-img:hover{
+    border: 1px solid black;
+  }
+
+  .profile-name{
+    font-weight: bold;
+    font-size: large;
+  }
+
+.nav-container{
+  margin: 0 40px;
+  padding: 1.4rem 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 3rem;
+}
+
+
+@media screen and (max-width:580px ) {
+
+  .nav-container{
+    margin: 0;
+  }
+
+  .logo{
+    margin:1rem 5px;
+    cursor: pointer;
+  
+  }
+
+  
+
+
+  
+}
+

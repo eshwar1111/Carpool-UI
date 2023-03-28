@@ -1,8 +1,9 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import IOfferRide from "../config/IOfferRide";
 import Navbar from "../Navbar";
 import {useForm} from "react-hook-form"
 import "./style.css"
+import * as Icon from "react-bootstrap-icons"
 import { useNavigate } from "react-router-dom";
 import AddStopsInput from "./AddStopsInput";
 import OfferPopUp from "./OfferPopUp";
@@ -14,13 +15,19 @@ const [inputFields, setInputFields] = useState([""]);
 
 const [showform2,setform2]=useState(false)
 
+
 const { register , handleSubmit}=useForm()
 
 const [isOpen,setOfferPopup]=useState(false)
 
+const bottomRef=useRef<null | HTMLDivElement>(null)
+
 const togglePopUp=()=>{
     setOfferPopup(!isOpen)
 }
+useEffect(() => {
+    bottomRef.current?.scrollIntoView({behavior:"smooth"});
+  }, [inputFields]);
  
 const addInputField = ()=>{
         setInputFields([...inputFields, "" ])
@@ -55,9 +62,11 @@ const onSubmit=async (data:any)=>{
     }
     console.log(body)
     OfferRide(body)
-   
-
    }
+
+
+
+
    const OfferRide=async(body:any)=>{
     const url=baseUrl+"offerride?UserId="+localStorage.getItem("userid") || "1"
     try{
@@ -92,20 +101,44 @@ const onSubmit=async (data:any)=>{
                     <div className="offerride-form-container">
 
                         <div className="offerride-form1">
-                            <h2>Offer A Ride</h2>
-                            <p>we get you the matches asap !</p>
-                            <div className="col-md">
-                                <label htmlFor="">From</label>
-                                <input type="text" className="input-offerride"{...register("from")} name="from" required/>
+                            <div className="offerride-form-header">
+                                <div className="offerride-heading">
+                                    <h2>Offer A Ride</h2>
+                                    <p>we get you the matches asap !</p>
+                                </div>
+                                <div className="checkbox-wrapper-22" >
+                                <label className="switch" htmlFor="checkbox">
+                                    <input type="checkbox" id="checkbox"  onChange={()=>{navigate("/bookride")}}/>
+                                    <div className="slider round"></div>
+                                </label>
+                                </div>
                             </div>
-                            <div className="col-md">
-                                <label htmlFor="">To</label>
-                                <input type="text" className="input-offerride" {...register("to")}name="to" required/>
-                            </div>
-                            <div className="col-md">
+                            <div className="offerride1-input-container">
+                                <div className="offerride1-inputs">
+                                    <div className="col-md">
+                                        <label htmlFor="">From</label>
+                                        <input type="text" className="input-offerride"{...register("from")} name="from" required/>
+                                    </div>
+                                    <div className="col-md">
+                                        <label htmlFor="">To</label>
+                                        <input type="text" className="input-offerride" {...register("to")}name="to" required/>
+                                    </div>
+                                    <div className="col-md">
 
-                                <label htmlFor="">Date</label>
-                                <input type="date"  className="input-offerride"{...register("date")}name="date" required/>
+                                        <label htmlFor="">Date</label>
+                                        <input type="date"  className="input-offerride"{...register("date")}name="date"  required/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <ul className="offerride1-icons">
+                                    <li className="list-group-item "><Icon.CircleFill className="start-circle"/></li>
+                                    <li className="list-group-item "><Icon.CircleFill className="circle"/></li>
+                                    <li className="list-group-item "><Icon.CircleFill className="circle"/></li>
+                                    <li className="list-group-item "><Icon.CircleFill className="circle"/></li>
+                                    <li className="list-group-item "><Icon.CircleFill className="circle"/></li>
+                                    <li className="list-group-item loc"><Icon.GeoAltFill className="end-geo"/></li>
+                                    </ul>
+                                </div>
                             </div>
                             <label>Time</label>
                             <div className="time-container">
@@ -137,22 +170,48 @@ const onSubmit=async (data:any)=>{
                         {showform2?(
                             
                             <div className="offerride-form2">
-                                <h2>Offer A Ride</h2>
-                                <p>we get you the matches asap !</p>
-                                <div className="stops-container">
-                                    {inputFields.map((stop,index)=>{
-                                        if(index==inputFields.length-1){
+                                <div className="offerride-form-header">
+                                    <div className="offerride-heading">
+                                        <h2>Offer A Ride</h2>
+                                        <p>we get you the matches asap !</p>
+                                    </div>
+                                    <div className="checkbox-wrapper-22" >
+                                    <label className="switch" htmlFor="checkbox">
+                                        <input type="checkbox" id="checkbox"  onChange={()=>{navigate("/bookride")}}/>
+                                        <div className="slider round"></div>
+                                    </label>
+                                    </div>
+                                </div>
+                                <div className="offerride2-inputs-container">
+                                    <div className="stops-container">
+                                        {inputFields.map((stop,index)=>{
+                                            if(index==inputFields.length-1){
+                                                return(
+                                                    <AddStopsInput addInputField={addInputField} index={index} handleChange={handleChange}/>
+                                                )
+                                            }
                                             return(
-                                                <AddStopsInput addInputField={addInputField} index={index} handleChange={handleChange}/>
+                                                <div className="stops">
+                                                <label htmlFor="">stop {index+1} :</label>
+                                                <input  type="text" className="input-offerride" name="stop" value={inputFields[index]} onChange={(e)=>{handleChange(index,e)}} required/>
+                                                </div>
                                             )
-                                        }
-                                        return(
-                                            <div className="stops">
-                                            <label htmlFor="">stop {index+1} :</label>
-                                            <input  type="text" className="input-offerride" name="stop" value={inputFields[index]} onChange={(e)=>{handleChange(index,e)}} required/>
-                                            </div>
-                                        )
-                                    })}
+                                        })}
+                                        <div ref={bottomRef}/>
+                                    </div>
+                                    <div className="offerride2-icon-container">
+                                        <ul className="offerride2-icons">
+                                        <li className="list-group-item "><Icon.CircleFill className="start-circle"/></li>
+                                        <li className="list-group-item "><Icon.CircleFill className="circle"/></li>
+                                        <li className="list-group-item "><Icon.CircleFill className="circle"/></li>
+                                        <li className="list-group-item "><Icon.CircleFill className="circle"/></li>
+                                        <li className="list-group-item "><Icon.CircleFill className="circle"/></li>
+                                        <li className="list-group-item "><Icon.CircleFill className="circle"/></li>
+                                        <li className="list-group-item "><Icon.CircleFill className="circle"/></li>
+                                        <li className="list-group-item "><Icon.CircleFill className="circle"/></li>
+                                        <li className="list-group-item loc"><Icon.GeoAltFill className="end-geo"/></li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div className="seatsprice-div">
                                     <div className="seats-div">

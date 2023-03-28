@@ -1,12 +1,13 @@
 
 .card11{
+  position: relative;
     background-color: rgb(255, 255, 255);
     width: 24rem;
     z-index: 2;
     cursor: pointer;
     margin: 15px;
+    
    }
-
 
   .circle{
     font-size: 8px;
@@ -29,7 +30,7 @@
     
     background-color: white;
     border-radius: 10px;
-    padding: 7px;
+    padding: 15px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
 
@@ -47,6 +48,7 @@
   }
 .end-geo{
     color: purple;
+    font-size: 18px;
 }
 
   .card11 label{
@@ -77,8 +79,10 @@
 
   .card1-title{
     
-    font-size: 27px;
+    font-size: 25px;
     margin-bottom: 16px;
+    font-weight: bold;
+    color: rgb(67, 67, 67);
   }
 
   .card1-body{

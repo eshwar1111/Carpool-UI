@@ -6,9 +6,25 @@
 }
 
 .bookride-main{
-    height: 100vh;
     background-image: url("../assets/img4.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: bottom; 
+    height: 100vh;
+}
+
+
+
+@media screen and (max-width:876px ) {
+
+    .bookride-container{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        align-items: center;
+    }
+    .bookride-main{
+        height: auto;
+    }
+
 }

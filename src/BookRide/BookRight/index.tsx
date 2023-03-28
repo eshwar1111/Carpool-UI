@@ -7,10 +7,21 @@ var rides:any[]=[{from:"ok",to:"ok",name:"name",date:"11/11/2022",seats:"2",pric
 interface BookRideRightProps{
     rides:any[]
     bookTheRide:(ride:any)=>void
+    hasSearched:boolean
 }
 
 
-const BookRideRight:React.FC<BookRideRightProps>=({rides,bookTheRide})=>{
+const BookRideRight:React.FC<BookRideRightProps>=({rides,bookTheRide,hasSearched})=>{
+
+
+
+    if(hasSearched==false){
+        return(
+            <div className="bookrideright-container">
+
+            </div>
+        )
+    }
     if(rides.length==0){
         return(
             <div className="bookrideright-container">

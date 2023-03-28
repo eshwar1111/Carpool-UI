@@ -49,7 +49,6 @@ const Login:React.FC=()=>{
         if(localStorage.getItem("token")!="null"){
           const token=localStorage.getItem("token")
           const credentials:any=jwt(token || "")
-          console.log(credentials)
           localStorage.setItem("username",credentials.Name)
           localStorage.setItem("userid",credentials.Sid)
           navigate("/home")
@@ -60,38 +59,43 @@ const Login:React.FC=()=>{
     }
     
 
+
     return(
         <div className="login-page">
           <div className="title-container">
             <div className="logo-container"><img className="logo-image" src={Logo} alt="logo" /></div>
-            <div className="heading-container">
-              <h1>TURN <span className="heading1">MILES</span></h1>
-              <h1>INTO <span className="heading2">MONEY</span></h1>
+            <div className="heading-subheading-con">
+              <div className="heading-container">
+                <h1>TURN <span className="heading1">MILES</span></h1>
+                <h1>INTO <span className="heading2">MONEY</span></h1>
+              </div>
+                <div className="sub-heading">R I D E S &nbsp; O N &nbsp; T A P</div>
             </div>
-              <div className="sub-heading">R I D E S &nbsp; O N &nbsp; T A P</div>
             <img className="login-image" src={BgImg} alt="bg-image" />
           </div>
           
-          <div className="form-container">
-            <h1 className="form-title">LogIn</h1>
-            <form id="login-form"  onSubmit={handleSubmit(CheckLogin)}>
-
-
-              <div  className="form-floating mb-3">
-                <input type="text" className="form-control" id="floatingInput"{...register("username")} name="username" required placeholder="usrname"/>
-                <label htmlFor="floatingInput">Enter username</label>
-              </div>
-
-              <div className="form-floating mb">
-                <input type="password" className="form-control" id="floatingPassword"{...register("password")} name="password" placeholder="Password" required/>
-                <label htmlFor="floatingPassword">Enter password</label>
-              </div>
-              {IsExceptionOpen&&<p className="vaild-details">! Enter Valid Details</p>}
-                <button className="submit-btn" type="submit" >Submit</button>
-                
-            </form>
+          <div className="form-container-login">
             <div>
-                <p className="sub-para">Not a member yet?  <span><Link className="signup-link" to="/signup" >  SIGN UP</Link></span></p>
+              <h1 className="form-title">LogIn</h1>
+              <form id="login-form"  onSubmit={handleSubmit(CheckLogin)}>
+
+
+                <div  className="form-floating mb-3">
+                  <input type="text" className="form-control" id="floatingInput"{...register("username")} name="username" required placeholder="usrname"/>
+                  <label htmlFor="floatingInput">Enter username</label>
+                </div>
+
+                <div className="form-floating mb">
+                  <input type="password" className="form-control" id="floatingPassword"{...register("password")} name="password" placeholder="Password" required/>
+                  <label htmlFor="floatingPassword">Enter password</label>
+                </div>
+                {IsExceptionOpen&&<p className="vaild-details">! Enter Valid Details</p>}
+                  <button className="submit-btn" type="submit" >Submit</button>
+                  
+              </form>
+              <div>
+                  <p className="sub-para">Not a member yet?  <span><Link className="signup-link" to="/signup" >  SIGN UP</Link></span></p>
+              </div>
             </div>
             <img src={BgImg2} className="form-image" alt="" />
           </div>

@@ -21,6 +21,8 @@
     font-style: italic;
     font-weight: bold;
     margin-left: 40px;
+    justify-content: space-between;
+    overflow-y: hidden;
 }
 
 .sub-heading{
@@ -44,14 +46,22 @@
   font-size: 1.5rem;
 }
 
-.form-container{
+.form-container-login{
     width:  35%;
     background-color: purple;
     text-align: center;
     height: 100%;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
 }
+
+.heading-subheading-con{
+  margin-bottom: 1rem;
+}
+
 #login-form{
   align-items: center;
   margin-top: 30px;
@@ -95,8 +105,7 @@
 
 .login-image{
   width: 95%;
-  height: 20rem;
-  margin-top: 70px;
+  height: 50%;
 }
 
   .submit-btn{
@@ -123,7 +132,7 @@
 
 .form-image{
   width: 100%;
-  margin-top: 20px;
+  height: 13.2rem;
 }
 
 .vaild-details{
@@ -133,4 +142,61 @@
   margin: 0px;
   color: rgb(224, 6, 6);
   z-index: 1;
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 935px) {
+  .login-page {
+    flex-direction: column;
+  }
+  .title-container{
+    margin-left: 0;
+    width: 100%;
+    height: fit-content;
+    overflow:visible;
+    align-items: center;
+  }
+  .form-container-login{
+    width: 100%;
+    overflow: visible;
+  }
+
+  .login-image{
+    display: none;
+  }
+  .sub-heading{
+    margin: 0px;
+    font-size: smaller;
+  }
+  .logo-container{
+    margin: 30px 20px;
+  }
+  .heading-container>h1{
+    font-size: 25px;
+    margin: 0;
+  }
+
+  .heading-container{
+    margin: 0;
+
+  }
+
+  .title-container{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .heading-subheading-con{
+    margin: 30px 20px;
+  }
+  .form-image{
+    display: none;
+  }
+  
 }

@@ -49,38 +49,43 @@ const SignUp:React.FC=()=>{
     return(
         <div className="signup-page">
             <div className="title-container">
-            <div className="logo-container"><img className="logo-image" src={Logo} alt="logo" /></div>
-            <div className="heading-container">
-              <h1>TURN <span className="heading1">MILES</span></h1>
-              <h1>INTO <span className="heading2">MONEY</span></h1>
+                <div className="logo-container"><img className="logo-image" src={Logo} alt="logo" /></div>
+                <div className="heading-subheading-con">
+                <div className="heading-container">
+                    <h1>TURN <span className="heading1">MILES</span></h1>
+                    <h1>INTO <span className="heading2">MONEY</span></h1>
+                </div>
+                    <div className="sub-heading">R I D E S &nbsp; O N &nbsp; T A P</div>
+                </div>
+                <img className="login-image" src={BgImg} alt="bg-image" />
             </div>
-              <div className="sub-heading">R I D E S &nbsp; O N &nbsp; T A P</div>
-            <img className="login-image" src={BgImg} alt="bg-image" />
-          </div>
+            
           
         <div className="form-container-signup">
-            <h1 className="form-title">SignUp</h1>
-            <form id="signup-form" onSubmit={handleSubmit(CheckSignUp)}>
-                <div className="form-floating mb-3">
-                    <input className="form-control"  id="floatingInput" type="text" {...register("username")} name="username" required placeholder="username"/>
-                    <label htmlFor="floatingInput">Enter Username</label>
-                </div>
-                
-                <div className="form-floating mb-3">
-                    <input className="form-control" id="floatingPassword" type="password" {...register("password")} name="password" required placeholder="password"/>
-                    <label htmlFor="floatingPassword">Enter Password</label>
-                </div>
-                <div className="form-floating mb-3">
-                    <input className="form-control" id="floatingPassword"  type="password" {...register("confirmpassword")} name="confirmpassword" placeholder="confirmpassword" required/>
-                    <label htmlFor="floatingPassword">Confirm Password</label>
-                </div>
-                {isExceptionOpen &&<p className="valid-details">!Enter Valid Details</p>}
-                {isSignedUp &&<p className="signed-details">Signed Up Successfully</p>}
-                <button className="submit-signup-btn " type="submit">SIGNUP</button>
-            </form>
-            
             <div>
-                <p className="sub-para">Already a member?<span><Link className="signup-link" to="/login"> LOGIN</Link></span></p>
+                <h1 className="form-title">SignUp</h1>
+                <form id="signup-form" onSubmit={handleSubmit(CheckSignUp)}>
+                    <div className="form-floating mb-3">
+                        <input className="form-control"  id="floatingInput" type="text" {...register("username")} name="username" required placeholder="username"/>
+                        <label htmlFor="floatingInput">Enter Username</label>
+                    </div>
+                    
+                    <div className="form-floating mb-3">
+                        <input className="form-control" id="floatingPassword" type="password" {...register("password")} name="password" required placeholder="password"/>
+                        <label htmlFor="floatingPassword">Enter Password</label>
+                    </div>
+                    <div className="form-floating mb-3">
+                        <input className="form-control" id="floatingPassword"  type="password" {...register("confirmpassword")} name="confirmpassword" placeholder="confirmpassword" required/>
+                        <label htmlFor="floatingPassword">Confirm Password</label>
+                    </div>
+                    {isExceptionOpen &&<p className="valid-details">!Enter Valid Details</p>}
+                    {isSignedUp &&<p className="signed-details">Signed Up Successfully</p>}
+                    <button className="submit-signup-btn " type="submit">SIGNUP</button>
+                </form>
+                
+                <div>
+                    <p className="sub-para">Already a member?<span><Link className="signup-link" to="/login"> LOGIN</Link></span></p>
+                </div>
             </div>
             <img src={BgImg2} className="form1-image" alt="" />
         </div>

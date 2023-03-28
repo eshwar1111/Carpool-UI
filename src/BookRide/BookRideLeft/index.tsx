@@ -1,24 +1,28 @@
 import React from "react";
 import {useForm} from "react-hook-form"
 import "./style.css"
+import * as Icon from "react-bootstrap-icons"
+import { useNavigate } from "react-router-dom";
+import {baseUrl} from "../../../package.json"
 
 
 interface BookRideLeftProps{
     updateRides:(rides:any)=>void;
+    updateHasSearched:()=>void;
 }
 
-const BookRideLeft:React.FC<BookRideLeftProps>=({updateRides})=>{
+const BookRideLeft:React.FC<BookRideLeftProps>=({updateRides,updateHasSearched})=>{
     const {handleSubmit,register}=useForm()
     const onSubmit=(data:any)=>{
-        // const form:any=document.querySelector("form")
-        // const data=Object.fromEntries(new FormData(form).entries())
-        console.log(data)
+        updateHasSearched()
         GetAvailableRides(data)
     }
 
+    const navigate=useNavigate()
+
 
     const GetAvailableRides=async(body:any)=>{
-        const url="https://localhost:7192/api/bookRide/availableRides"
+        const url=baseUrl+"bookRide/availableRides"
         try{
             const response=await fetch(url,{method:"POST",
             headers: {
@@ -29,7 +33,6 @@ const BookRideLeft:React.FC<BookRideLeftProps>=({updateRides})=>{
             body:JSON.stringify(body)
             })
             var newrides= await response.json()
-            console.log(newrides)
             updateRides(newrides)
         }
         catch(error){
@@ -40,27 +43,49 @@ const BookRideLeft:React.FC<BookRideLeftProps>=({updateRides})=>{
 
     return(
         <div className="bookrideleft-container">
-            <div className="container">
-            <h2>Book A Ride</h2>
-            <p>we get you the matches asap !</p>
+            <div className="bookrideleft-container1">
+            <div className="bookride-header">
+                <div className="bookride-heading">
+                    <h2>Book A Ride</h2>
+                    <p>we get you the matches asap !</p>
+                </div>
+                <div className="checkbox-wrapper-22" >
+                <label className="switch" htmlFor="checkbox">
+                    <input type="checkbox" id="checkbox" defaultChecked onChange={()=>{navigate("/offerride")}} />
+                    <div className="slider round"></div>
+                </label>
+                </div>
+
+            </div>
 
             <form className="form-group" onSubmit={handleSubmit(onSubmit)}>
-                <div className="col-md ">
-                <label htmlFor="">From</label>
-                <input type="text" className="input-bookride" {...register("startpoint")} name="startpoint" required/>
+                <div className="bookride-inputs-container">
+                    <div className="bookride-inputs">
+                        <div className="col-md ">
+                        <label htmlFor="">From</label>
+                        <input type="text" className="input-bookride" {...register("startpoint")} name="startpoint" required/>
+                        </div>
+                        <div className="col-md">
+                        <label htmlFor="">To</label>
+                        <input type="text"  className="input-bookride" {...register("endpoint")} name="endpoint"  required/>
+                        </div>
+                        <div className="col-md">
+                        <label htmlFor="">Date</label>
+                        <input type="date" placeholder="xx/mm/yyyy"  className="input-bookride"{...register("date")} name="date" required/>
+                        </div>
+                    </div>
+                    <div>
+                        <ul className="offerride1-icons">
+                        <li className="list-group-item "><Icon.CircleFill className="start-circle"/></li>
+                        <li className="list-group-item "><Icon.CircleFill className="circle"/></li>
+                        <li className="list-group-item "><Icon.CircleFill className="circle"/></li>
+                        <li className="list-group-item "><Icon.CircleFill className="circle"/></li>
+                        <li className="list-group-item "><Icon.CircleFill className="circle"/></li>
+                        <li className="list-group-item loc"><Icon.GeoAltFill className="end-geo"/></li>
+                        </ul>
+                    </div>
+
                 </div>
-                <div className="col-md">
-                <label htmlFor="">To</label>
-                <input type="text"  className="input-bookride" {...register("endpoint")} name="endpoint"  required/>
-                </div>
-                <div className="col-md">
-                <label htmlFor="">Date</label>
-                <input type="date" placeholder="xx/mm/yyyy"  className="input-bookride"{...register("date")} name="date" required/>
-                </div>
-                {/* <div className="col-md">
-                <label htmlFor="">Time</label>
-                <input type="text"  className="form-control"{...register("time")} name="time" required/>
-                </div> */}
                 <label>Time</label>
                 <div className="time-container">
                     <label>

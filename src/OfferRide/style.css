@@ -3,10 +3,18 @@
 .stops-container{
     overflow-y: scroll;
     height: 150px;
+    width: 84%;
 }
 
-.stops-container::-webkit-scrollbar {
-    display: none;
+
+.stops-container::-webkit-scrollbar{
+    margin-left: 10px;
+    width: 5px;    
+  }
+
+.stops-container::-webkit-scrollbar-thumb {
+    background-color: rgb(222, 220, 220); 
+    border-radius: 20px;       
 }
 
 
@@ -37,7 +45,7 @@
 }
 
 
-.offerride-form1>p{
+.offerride-heading>p{
     font-size: 12px;
     color: grey;
     font-weight: normal;
@@ -53,17 +61,17 @@
     font-weight: bold;
 }
 
+.offerride1-input-container{
+    display: flex;
+    flex-direction: row;
+}
 
-.offerride-form1>h2{
+.offerride-heading>h2{
     font-size: 25px;
     font-weight:550;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
-.offerride-form2>h2{
-    font-size: 25px;
-    font-weight:550;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-}
+
 
 input, label{
     display: block;
@@ -73,7 +81,7 @@ input, label{
     width: 100%;
     border: 0px ;
     border-bottom: 1px solid black;
-    margin-bottom: 5px;
+    margin-bottom: 7px;
 }
 
 .nxt-btn{
@@ -175,5 +183,148 @@ input, label{
 }
 
 
+.offerride1-icons{
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+    margin-left: 7px;
+    margin-top: 18px;
+}
+
+.offerride1-icons>.list-group-item{
+    margin: 0;
+    padding: 0;
+    height: 18px;
+}
+.offerride2-icons>.list-group-item{
+    margin: 0;
+    padding: 0;
+    height: 16px;
+}
+
+.offerride1-inputs{
+    width: 87%;
+}
+
+.offerride2-inputs-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.offerride2-icons{
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+    margin-left: 16px;
+}
+
+.offerride2-icon-container{
+    margin-bottom: 6px;
+
+}
+
+.offerride-form-header{
+    display: flex;
+    flex-direction: row;
+}
 
 
+
+
+
+
+
+
+
+
+  .checkbox-wrapper-22 .switch {
+    display: inline-block;
+    height: 27px;
+    position: relative;
+    width: 56px;
+  }
+
+  .checkbox-wrapper-22 .switch input {
+    display:none;
+  }
+
+  .checkbox-wrapper-22 .slider {
+    background-color: orange;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+  }
+
+  .checkbox-wrapper-22 .slider:before {
+    background-color: #fff;
+    bottom: 3px;
+    content: "";
+    height: 22px;
+    left: 3px;
+    position: absolute;
+    transition: .4s;
+    width: 22px;
+  }
+
+  .checkbox-wrapper-22 input:checked + .slider {
+    background-color: purple;
+  }
+
+  .checkbox-wrapper-22 input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  .checkbox-wrapper-22 .slider.round {
+    border-radius: 34px;
+  }
+
+  .checkbox-wrapper-22 .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .checkbox-wrapper-22{
+    margin-left: 70px;
+  }
+
+
+  @media screen and (max-width:910px ) {
+
+    .offerride-form-container{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .offerride-form1{
+        margin: 0;
+    }
+
+    .offerride-form2{
+        margin: 0;
+        margin-top: 50px;
+    }
+
+    .form-control{
+        padding: 0;
+    }
+
+    .offerride-form-header{
+        justify-content: space-between;
+    }
+    .offerride-page{
+        height: 0px;
+    }
+  }

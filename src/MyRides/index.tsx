@@ -3,12 +3,32 @@ import Navbar from "../Navbar";
 import HistoryideTile from "./HistoryRideTile";
 import "./style.css"
 import {baseUrl} from "../../package.json"
+import { DistributeVertical } from "react-bootstrap-icons";
 
 
 const MyRides:React.FC=()=>{
 
     const [offeredRides,setOfferedRides]=useState([])
     const [bookedRides,setBookedRides]=useState([])
+    const [showBookedRides,setShowBooked]=useState(true)
+    const [showOfferedRides,setShowOffered]=useState(true)
+    const [currentRide,setCurrentRide]=useState("Booked-Rides")
+
+
+    const switchRides=()=>{
+        if(currentRide=="Booked-Rides"){
+            setShowBooked(true)
+            setShowOffered(false)
+            setCurrentRide("Offered-Rides")
+        }
+        else{
+            setShowBooked(false)
+            setShowOffered(true)
+            setCurrentRide("Booked-Rides")
+            
+        }
+
+    }
 
     const getBookedRides=async()=>{
 
@@ -22,7 +42,6 @@ const MyRides:React.FC=()=>{
         catch(error){
             return []
         }
-
     }
 
     const  getOfferedRides=async()=>{
@@ -37,7 +56,6 @@ const MyRides:React.FC=()=>{
         catch(error){
             return []
         }
-
     }
     useEffect(()=>{
         getBookedRides()
@@ -48,7 +66,8 @@ const MyRides:React.FC=()=>{
      <div className="myrides-page">
         <Navbar/>
         <div className="myrides-container">
-        <div className="booked-rides">
+        <button className="switch-history" onClick={(e)=>{e.preventDefault(),switchRides()}}>Show {currentRide} </button> 
+        {showBookedRides&&<div className="booked-rides">
             <h1>Booked Rides</h1>
             
             {bookedRides.length==0&& <div>---  you haven't booked any rides</div> }
@@ -59,8 +78,8 @@ const MyRides:React.FC=()=>{
                     )
                 })}
             </div>
-        </div>
-        <div className="offered-rides">
+        </div>}
+        {showOfferedRides&&<div className="offered-rides">
             <h1>Offered Rides</h1>
             {offeredRides.length==0&& <div>---  you haven't offered any rides</div> }
             <div className="ride-container">
@@ -70,7 +89,7 @@ const MyRides:React.FC=()=>{
                     )
                 })}
             </div>
-        </div>
+        </div>}
         </div>
      </div>   
     )

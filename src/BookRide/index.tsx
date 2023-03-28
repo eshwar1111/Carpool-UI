@@ -12,6 +12,12 @@ import {baseUrl} from "../../package.json"
 const BookRide:React.FC=()=>{
     const [rides,setrides]=useState([])
 
+    const [hasSearched,setSearched]=useState(false)
+
+    const updatedHasSearched=()=>{
+        setSearched(true)
+    }
+
     const updateRides=(rides:any)=>{
         setrides(rides)
     }
@@ -43,8 +49,8 @@ const BookRide:React.FC=()=>{
         <div className="bookride-main">
             <Navbar/>
             <div className="bookride-container">
-            <BookRideLeft updateRides={updateRides}/>
-            <BookRideRight rides={rides} bookTheRide={bookTheRide}/> 
+            <BookRideLeft updateRides={updateRides} updateHasSearched={updatedHasSearched}/>
+            <BookRideRight rides={rides} bookTheRide={bookTheRide} hasSearched={hasSearched} /> 
             </div>
        </div>
     )

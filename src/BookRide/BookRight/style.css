@@ -1,19 +1,50 @@
 .bookrideright-container{
     width: 65%;
     margin-left: 20px;
+  
 }
 
 .rides-container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    height: 450px;
+    overflow-y: scroll;
+
 }
 
 .bookrideright-container >h2{
     font-size:30px;
     color: purple;
     margin-top: 20px;
-
-
     font-weight: 700;
 }
+
+
+.rides-container::-webkit-scrollbar{
+    width: 7px;    
+  }
+  
+
+  
+  .rides-container::-webkit-scrollbar-thumb {
+    background-color: rgb(222, 220, 220); 
+    border-radius: 20px;       
+  }
+
+
+  @media screen and (max-width:876px ) {
+    .rides-container{
+        height: 250px;
+        background-color: rgb(233, 233, 233);
+        border: 2px solid rgb(88, 88, 88);
+        border-radius: 7px;
+        padding: 2px;
+    }
+
+    .bookrideright-container{
+        width: 100%;
+        margin: 0;
+        margin-top: 50px;
+    }
+  }

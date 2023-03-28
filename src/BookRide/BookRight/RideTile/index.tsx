@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import * as Icon from 'react-bootstrap-icons';
 import { ArrowRight } from "react-bootstrap-icons";
 import PopUp from "../../PopUp";
+import PImg from "../../../assets/default2.jpg"
 
 interface RideTileProps{
     Ride:any
@@ -21,11 +22,14 @@ const RideTile:React.FC<RideTileProps>=({Ride,bookTheRide})=>{
     }
 
     return(
+        <div>
+        {isOpen&&<PopUp togglePopUp={togglePopUp} bookTheRide={bookTheRide} ride={Ride}/>}
         <div className="card11" onClick={(e)=>{e.preventDefault(), togglePopUp()}}>
-                {isOpen&&<PopUp togglePopUp={togglePopUp} bookTheRide={bookTheRide} ride={Ride}/>}
                 <div className="card1-body">
-                    <div className="d-flex">
+                    <div className="d-flex card-title">
                         <h5 className="card1-title">{Ride.offeredBy}</h5>
+                        
+                    <img src={PImg} alt="img" className="profile-img"/>
                     </div>
                     <div className="d-grid matched-offer">
                             <div>
@@ -72,6 +76,7 @@ const RideTile:React.FC<RideTileProps>=({Ride,bookTheRide})=>{
                         </div>
                 </div>
             </div>
+        </div>
 
     )
 }

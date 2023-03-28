@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css"
 import * as Icon from "react-bootstrap-icons"
+import PImg from "../../assets/default2.jpg"
 
 interface HistoryRideTileProps{
     Ride:any
@@ -22,8 +23,9 @@ const HistoryideTile:React.FC<HistoryRideTileProps>=({Ride,flag})=>{
         return(
             <div className="card1">
             <div className="card1-body">
-                <div className="d-flex">
+                <div className="d-flex card-title">
                     <h5 className="card1-title">{name}</h5>
+                    <img src={PImg} alt="img" className="profile-img"/>
                 </div>
                 <div className="d-grid matched-offer">
                         <div>
