@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {useForm} from "react-hook-form"
 import "./style.css"
 import * as Icon from "react-bootstrap-icons"
 import { useNavigate } from "react-router-dom";
-import {baseUrl} from "../../../package.json"
-
+import {baseUrl} from "../../../package.json";
 
 interface BookRideLeftProps{
     updateRides:(rides:any)=>void;
@@ -12,7 +11,9 @@ interface BookRideLeftProps{
 }
 
 const BookRideLeft:React.FC<BookRideLeftProps>=({updateRides,updateHasSearched})=>{
-    const {handleSubmit,register}=useForm()
+    const {handleSubmit,register,formState:{errors}}=useForm({mode:"onTouched"})
+
+
     const onSubmit=(data:any)=>{
         updateHasSearched()
         GetAvailableRides(data)
@@ -20,8 +21,36 @@ const BookRideLeft:React.FC<BookRideLeftProps>=({updateRides,updateHasSearched})
 
     const navigate=useNavigate()
 
+    const [locations,setLocations]=useState([])
+
+    // const [currentStops,setCurrentStops]=useState([0])
+
+    // const GetAvailableLocations=async()=>{
+    //     const url=baseUrl+"bookRide/availableLocations"
+    //     try{
+    //         const response=await fetch(url)
+    //         var ok=await response.json()
+    //         ok.forEach((l: any) => {
+    //             l.isSelected=true
+    //         });
+    //         setLocations(ok)
+    //         console.log(ok)
+    //     }
+    //     catch(error){
+    //         return []
+    //     }
+    // }
+
+    // useEffect(()=>{
+    //     GetAvailableLocations()
+    // },[]);
+
+    
+
+
 
     const GetAvailableRides=async(body:any)=>{
+        console.log(body)
         const url=baseUrl+"bookRide/availableRides"
         try{
             const response=await fetch(url,{method:"POST",
@@ -39,6 +68,8 @@ const BookRideLeft:React.FC<BookRideLeftProps>=({updateRides,updateHasSearched})
             console.log(error)
         }
     }
+
+
 
 
     return(
@@ -63,16 +94,33 @@ const BookRideLeft:React.FC<BookRideLeftProps>=({updateRides,updateHasSearched})
                     <div className="bookride-inputs">
                         <div className="col-md ">
                         <label htmlFor="">From</label>
-                        <input type="text" className="input-bookride" {...register("startpoint")} name="startpoint" required/>
+                        <input type="text" className="input-bookride" {...register("startpoint",{required:true,pattern:/^[a-zA-Z]*$/})} onChange={()=>{}}  />
+                        {errors.startpoint?.type==="required" && <p className="error">this field is required</p>}
+                        {errors.startpoint?.type==="pattern" && <p className="error">enter valid name</p>}
                         </div>
+                        {/* <div className="col-md">
+                        <label htmlFor="">From</label>
+                            <select className="location-select" id="" {...register("startpoint")} >
+                                {
+                                    locations.map((stop: any)=>{
+                                        if(!currentStops.includes(stop))
+                                        return(
+                                                <option value={stop.name} onSelect={()=>{console.log("selecetddddd")}}>{stop.name}</option>
+                                        )
+                                    })
+                                }
+                            </select>
+                        </div> */}
                         <div className="col-md">
                         <label htmlFor="">To</label>
-                        <input type="text"  className="input-bookride" {...register("endpoint")} name="endpoint"  required/>
+                        <input type="text"  className="input-bookride" {...register("endpoint",{required:true,pattern:/^[a-zA-Z]*$/})} name="endpoint"/>
+                        {errors.endpoint?.type==="required" && <p className="error">this field is required</p>}
+                        {errors.endpoint?.type==="pattern" && <p className="error">enter valid name</p>}
                         </div>
                         <div className="col-md">
                         <label htmlFor="">Date</label>
                         <input type="date" placeholder="xx/mm/yyyy"  className="input-bookride"{...register("date")} name="date" required/>
-                        </div>
+                        </div> 
                     </div>
                     <div>
                         <ul className="offerride1-icons">

@@ -64,7 +64,7 @@ const RideTile:React.FC<RideTileProps>=({Ride,bookTheRide})=>{
                             </div>
                             <div>
                                 <label>Price</label>
-                                <h4>{Ride.price}</h4>
+                                <h4>{Ride.price}₹</h4>
                             </div>
                             <div>
 

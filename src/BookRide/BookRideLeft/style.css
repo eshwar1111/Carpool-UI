@@ -18,6 +18,13 @@ input, label{
     border-bottom: 1px solid black;
 }
 
+.input-bookride:focus{
+    outline: none;
+    border-bottom: 1px solid rgb(0, 112, 223) ;
+    
+    
+}
+
 .col-md{
     margin: 20px 4px;
    
@@ -99,6 +106,18 @@ input, label{
 .bookrideleft-container1{
     width: 330px;
 }  
+
+.location-select{
+    width: 100%  ;
+    border: none;
+    border-bottom: 1px solid black;
+}
+.error{
+    margin: 0;
+    position: absolute;
+    font-size: 12px;
+    color: red;
+}
 
 
 @media screen and (max-width:876px ) {

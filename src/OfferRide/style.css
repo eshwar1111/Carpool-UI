@@ -4,6 +4,7 @@
     overflow-y: scroll;
     height: 150px;
     width: 84%;
+    
 }
 
 
@@ -32,6 +33,7 @@
     border-radius: 1%;
     z-index: 2;
     background-color: white;
+    
 }
 
 .offerride-form2{
@@ -82,6 +84,11 @@ input, label{
     border: 0px ;
     border-bottom: 1px solid black;
     margin-bottom: 7px;
+}
+
+.input-offerride:focus{
+    outline: none;
+    border-bottom: 2px solid rgb(0, 112, 223) ;
 }
 
 .nxt-btn{

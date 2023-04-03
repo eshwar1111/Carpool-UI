@@ -15,7 +15,8 @@ import {baseUrl} from "../../package.json"
 
 
 const Login:React.FC=()=>{
-    const {handleSubmit ,register}=useForm()
+    
+    const {handleSubmit,register,formState:{errors}}=useForm({mode:"onTouched"})
 
     const [IsExceptionOpen,setExecption]=useState(false)
 
@@ -81,17 +82,21 @@ const Login:React.FC=()=>{
 
 
                 <div  className="form-floating mb-3">
-                  <input type="text" className="form-control" id="floatingInput"{...register("username")} name="username" required placeholder="usrname"/>
+                  <input type="text" className="form-control" id="floatingInput"{...register("username",{required:true,pattern:/^[a-zA-Z]*$/})} name="username" required placeholder="username"/>
                   <label htmlFor="floatingInput">Enter username</label>
+                  {errors.username?.type==="required" && <p className="error">** this field is required</p>}
+                  {errors.username?.type==="pattern" && <p className="error">** enter valid name</p>}
                 </div>
 
                 <div className="form-floating mb">
-                  <input type="password" className="form-control" id="floatingPassword"{...register("password")} name="password" placeholder="Password" required/>
+                  <input type="password" className="form-control" id="floatingPassword"{...register("password",{required:true,pattern:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/})} name="password" placeholder="Password" required/>
                   <label htmlFor="floatingPassword">Enter password</label>
+                  {errors.password?.type==="required" && <p className="error">** this field is required</p>}
+                  {errors.password?.type==="pattern" && <p className="error">** enter valid password</p>}
                 </div>
                 {IsExceptionOpen&&<p className="vaild-details">! Enter Valid Details</p>}
                   <button className="submit-btn" type="submit" >Submit</button>
-                  
+
               </form>
               <div>
                   <p className="sub-para">Not a member yet?  <span><Link className="signup-link" to="/signup" >  SIGN UP</Link></span></p>

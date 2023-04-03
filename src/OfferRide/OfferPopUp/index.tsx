@@ -9,6 +9,8 @@ interface OfferPopUpProps{
 
 const OfferPopUp:React.FC<OfferPopUpProps>=({togglePopUp})=>{
 
+    
+
     const navigate=useNavigate()
     
     return(

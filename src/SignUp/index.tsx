@@ -18,8 +18,8 @@ const SignUp:React.FC=()=>{
     const [isSignedUp,setSignedUp]=useState(false)
 
     const navigate=useNavigate()
-
-    const {handleSubmit,register}=useForm()
+    
+    const {handleSubmit,register,formState:{errors}}=useForm({mode:"onTouched"})
 
     const SignUpUser=async(body:any)=>{
         console.log(JSON.stringify(body))
@@ -66,17 +66,26 @@ const SignUp:React.FC=()=>{
                 <h1 className="form-title">SignUp</h1>
                 <form id="signup-form" onSubmit={handleSubmit(CheckSignUp)}>
                     <div className="form-floating mb-3">
-                        <input className="form-control"  id="floatingInput" type="text" {...register("username")} name="username" required placeholder="username"/>
+                        <input className="form-control"  id="floatingInput" type="text" {...register("username",{required:true,pattern:/^[a-zA-Z]*$/})} name="username" required placeholder="username"/>
                         <label htmlFor="floatingInput">Enter Username</label>
+                                
+                        {errors.username?.type==="required" && <p className="error">** this field is required</p>}
+                        {errors.username?.type==="pattern" && <p className="error">** enter valid name</p>}
                     </div>
                     
                     <div className="form-floating mb-3">
-                        <input className="form-control" id="floatingPassword" type="password" {...register("password")} name="password" required placeholder="password"/>
+                        <input className="form-control" id="floatingPassword" type="password" {...register("password",{required:true,pattern:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/})} name="password" required placeholder="password"/>
                         <label htmlFor="floatingPassword">Enter Password</label>
+                               
+                        {errors.password?.type==="required" && <p className="error">** this field is required</p>}
+                        {errors.password?.type==="pattern" && <p className="error">** enter valid password</p>}
                     </div>
                     <div className="form-floating mb-3">
-                        <input className="form-control" id="floatingPassword"  type="password" {...register("confirmpassword")} name="confirmpassword" placeholder="confirmpassword" required/>
+                        <input className="form-control" id="floatingPassword"  type="password" {...register("confirmpassword",{required:true,pattern:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/})} name="confirmpassword" placeholder="confirmpassword" required/>
                         <label htmlFor="floatingPassword">Confirm Password</label>
+                               
+                        {errors.confirmpassword?.type==="required" && <p className="error">** this field is required</p>}
+                        {errors.confirmpassword?.type==="pattern" && <p className="error">** enter valid password</p>}
                     </div>
                     {isExceptionOpen &&<p className="valid-details">!Enter Valid Details</p>}
                     {isSignedUp &&<p className="signed-details">Signed Up Successfully</p>}

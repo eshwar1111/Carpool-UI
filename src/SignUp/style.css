@@ -15,6 +15,11 @@
     width: 100%;
     height: 13.2rem;
 }
+#floatingInput:focus{
+  outline: none;
+  border: none;
+
+}
 
 .submit-signup-btn{
     background-color: purple;

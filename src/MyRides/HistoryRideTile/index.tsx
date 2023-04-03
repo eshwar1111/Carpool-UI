@@ -60,7 +60,7 @@ const HistoryideTile:React.FC<HistoryRideTileProps>=({Ride,flag})=>{
                         </div>
                         <div>
                             <label>Price</label>
-                            <h4>{Ride.price}</h4>
+                            <h4>{Ride.price}₹</h4>
                         </div>
                         <div>
 

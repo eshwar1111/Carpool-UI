@@ -16,7 +16,7 @@ const [inputFields, setInputFields] = useState([""]);
 const [showform2,setform2]=useState(false)
 
 
-const { register , handleSubmit}=useForm()
+const { register , handleSubmit ,formState:{errors}}=useForm({mode:"onTouched"})
 
 const [isOpen,setOfferPopup]=useState(false)
 
@@ -51,6 +51,9 @@ const navigate=useNavigate();
 const onSubmit=async (data:any)=>{
     console.log(data);
     console.log(inputFields)
+    if(inputFields[inputFields.length-1]==""){
+        inputFields.pop()
+    }
     var path1:string[]=[data.from.toString()].concat(inputFields)
     path1.push(data.to.toString())
     const body:IOfferRide={
@@ -82,7 +85,6 @@ const onSubmit=async (data:any)=>{
         if(ok){
             setOfferPopup(true)
         }
-        
     }
     catch(error){
         console.log(error)
@@ -92,7 +94,6 @@ const onSubmit=async (data:any)=>{
 
    
     return(
-        
         <div className="offerride-page">
             <Navbar/>
             {isOpen&&<OfferPopUp togglePopUp={togglePopUp}/>}
@@ -117,16 +118,22 @@ const onSubmit=async (data:any)=>{
                                 <div className="offerride1-inputs">
                                     <div className="col-md">
                                         <label htmlFor="">From</label>
-                                        <input type="text" className="input-offerride"{...register("from")} name="from" required/>
+                                        <input type="text" className="input-offerride"{...register("from",{required:true,pattern:/^[a-zA-Z]*$/})}/>
+                                        {errors.from?.type==="required" && <p className="error">this field is required</p>}
+                                        {errors.from?.type==="pattern" && <p className="error">enter valid name</p>}
                                     </div>
+                                   
                                     <div className="col-md">
                                         <label htmlFor="">To</label>
-                                        <input type="text" className="input-offerride" {...register("to")}name="to" required/>
+                                        <input type="text" className="input-offerride" {...register("to",{required:true,pattern:/^[a-zA-Z]*$/})}name="to" required/>
+                                        {errors.to?.type==="required" && <p className="error">this field is required</p>}
+                                        {errors.to?.type==="pattern" && <p className="error">enter valid name</p>}
                                     </div>
                                     <div className="col-md">
 
                                         <label htmlFor="">Date</label>
-                                        <input type="date"  className="input-offerride"{...register("date")}name="date"  required/>
+                                        <input type="date"  className="input-offerride"{...register("date")}name="date" min={new Date().toISOString().split("T")[0]}  required/>
+                                        
                                     </div>
                                 </div>
                                 <div>
@@ -193,7 +200,7 @@ const onSubmit=async (data:any)=>{
                                             return(
                                                 <div className="stops">
                                                 <label htmlFor="">stop {index+1} :</label>
-                                                <input  type="text" className="input-offerride" name="stop" value={inputFields[index]} onChange={(e)=>{handleChange(index,e)}} required/>
+                                                <input  type="text" className="input-offerride" pattern="^[a-zA-Z]*$" required name="stop" value={inputFields[index]} onChange={(e)=>{handleChange(index,e)}}/>
                                                 </div>
                                             )
                                         })}
