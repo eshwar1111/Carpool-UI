@@ -7,6 +7,7 @@ import BgImg2 from "../assets/img2.png"
 import "./style.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {baseUrl} from "../../package.json"
+import { SignUpApiHelper } from "../Utils/ApiCalls"
 
 const SignUp:React.FC=()=>{
     const CheckSignUp=async (data:any)=>{
@@ -23,15 +24,8 @@ const SignUp:React.FC=()=>{
 
     const SignUpUser=async(body:any)=>{
         console.log(JSON.stringify(body))
-        const url=baseUrl+"authentication/signup"
         try{
-            const response=await fetch(url,{method:"POST",
-            headers: {
-            Accept: 'application.json',
-            'Content-Type': 'application/json'
-            },
-            body:JSON.stringify(body)
-            })
+            const response=await SignUpApiHelper(body)
             if(response.status==400){
                 setException(true)
                 setSignedUp(false)

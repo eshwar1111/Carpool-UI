@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form"
 import "./style.css"
 import * as Icon from "react-bootstrap-icons"
 import { useNavigate } from "react-router-dom";
-import {baseUrl} from "../../../package.json";
+import { GetAvailableRidesApiHelper } from "../../Utils/ApiCalls";
 
 interface BookRideLeftProps{
     updateRides:(rides:any)=>void;
@@ -21,46 +21,13 @@ const BookRideLeft:React.FC<BookRideLeftProps>=({updateRides,updateHasSearched})
 
     const navigate=useNavigate()
 
-    const [locations,setLocations]=useState([])
 
-    // const [currentStops,setCurrentStops]=useState([0])
-
-    // const GetAvailableLocations=async()=>{
-    //     const url=baseUrl+"bookRide/availableLocations"
-    //     try{
-    //         const response=await fetch(url)
-    //         var ok=await response.json()
-    //         ok.forEach((l: any) => {
-    //             l.isSelected=true
-    //         });
-    //         setLocations(ok)
-    //         console.log(ok)
-    //     }
-    //     catch(error){
-    //         return []
-    //     }
-    // }
-
-    // useEffect(()=>{
-    //     GetAvailableLocations()
-    // },[]);
-
-    
 
 
 
     const GetAvailableRides=async(body:any)=>{
-        console.log(body)
-        const url=baseUrl+"bookRide/availableRides"
         try{
-            const response=await fetch(url,{method:"POST",
-            headers: {
-            Accept: 'application.json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem("token")}`
-            },
-            body:JSON.stringify(body)
-            })
+            const response=await GetAvailableRidesApiHelper(body)
             var newrides= await response.json()
             updateRides(newrides)
         }
@@ -94,23 +61,11 @@ const BookRideLeft:React.FC<BookRideLeftProps>=({updateRides,updateHasSearched})
                     <div className="bookride-inputs">
                         <div className="col-md ">
                         <label htmlFor="">From</label>
-                        <input type="text" className="input-bookride" {...register("startpoint",{required:true,pattern:/^[a-zA-Z]*$/})} onChange={()=>{}}  />
+                        <input type="text" className="input-bookride" {...register("startpoint",{required:true,pattern:/^[a-zA-Z]*$/})} />
                         {errors.startpoint?.type==="required" && <p className="error">this field is required</p>}
                         {errors.startpoint?.type==="pattern" && <p className="error">enter valid name</p>}
                         </div>
-                        {/* <div className="col-md">
-                        <label htmlFor="">From</label>
-                            <select className="location-select" id="" {...register("startpoint")} >
-                                {
-                                    locations.map((stop: any)=>{
-                                        if(!currentStops.includes(stop))
-                                        return(
-                                                <option value={stop.name} onSelect={()=>{console.log("selecetddddd")}}>{stop.name}</option>
-                                        )
-                                    })
-                                }
-                            </select>
-                        </div> */}
+                        
                         <div className="col-md">
                         <label htmlFor="">To</label>
                         <input type="text"  className="input-bookride" {...register("endpoint",{required:true,pattern:/^[a-zA-Z]*$/})} name="endpoint"/>

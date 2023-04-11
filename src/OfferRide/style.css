@@ -186,7 +186,8 @@ input, label{
     background-image: url("../assets/img4.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: bottom;    
+    background-position: bottom; 
+    min-height: 660px;   
 }
 
 
@@ -333,5 +334,6 @@ input, label{
     }
     .offerride-page{
         height: 0px;
+        background-image: none;
     }
   }

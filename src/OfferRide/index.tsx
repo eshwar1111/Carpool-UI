@@ -7,7 +7,7 @@ import * as Icon from "react-bootstrap-icons"
 import { useNavigate } from "react-router-dom";
 import AddStopsInput from "./AddStopsInput";
 import OfferPopUp from "./OfferPopUp";
-import {baseUrl} from "../../package.json"
+import { OfferRideApiHelper } from "../Utils/ApiCalls";
 
 const OfferRide:React.FC=()=>{
 
@@ -49,8 +49,6 @@ const handleChange = (index:number, evnt:React.ChangeEvent<HTMLInputElement>)=>{
 const navigate=useNavigate();
 
 const onSubmit=async (data:any)=>{
-    console.log(data);
-    console.log(inputFields)
     if(inputFields[inputFields.length-1]==""){
         inputFields.pop()
     }
@@ -63,7 +61,6 @@ const onSubmit=async (data:any)=>{
         date:new Date(data.date.toString()),
         timeslot:data.time.toString()
     }
-    console.log(body)
     OfferRide(body)
    }
 
@@ -71,15 +68,8 @@ const onSubmit=async (data:any)=>{
 
 
    const OfferRide=async(body:any)=>{
-    const url=baseUrl+"offerride?UserId="+localStorage.getItem("userid") || "1"
     try{
-        const response=await fetch(url,{method:"POST",
-        headers: {
-        Accept: 'application.json',
-        'Content-Type': 'application/json'
-        },
-        body:JSON.stringify(body)
-        })
+        const response=await OfferRideApiHelper(body)
         var ok=await response.json()
         console.log(ok)
         if(ok){

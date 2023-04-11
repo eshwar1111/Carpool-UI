@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "baseUrl":"https://localhost:7192/api/",
+  "baseUrl": "https://localhost:7192/api/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -17,7 +17,8 @@
     "react": "^18.2.0",
     "react-bootstrap-icons": "^1.10.2",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.43.2"
+    "react-hook-form": "^7.43.2",
+    "react-toastify": "^9.1.2"
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.6",

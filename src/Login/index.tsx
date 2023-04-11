@@ -10,27 +10,19 @@ import BgImg from '../assets/img1.png'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./style.css"
 import BgImg2 from '../assets/img2.png'
-
-import {baseUrl} from "../../package.json"
+import { LogInApiHelper } from "../Utils/ApiCalls"
 
 
 const Login:React.FC=()=>{
     
+
     const {handleSubmit,register,formState:{errors}}=useForm({mode:"onTouched"})
 
     const [IsExceptionOpen,setExecption]=useState(false)
 
     const UserExists=async(body:any)=>{
-      const url= baseUrl+"authentication/login"
-      console.log(JSON.stringify(body))
       try{
-        const response=await fetch(url,{method:"POST",
-        headers: {
-          Accept: 'application.json',
-          'Content-Type': 'application/json'
-        },
-        body:JSON.stringify(body)
-        });
+        const response=await LogInApiHelper(body)
         const data=await response.text();
         if(data!="false"){
           localStorage.setItem("token",data)
@@ -77,6 +69,7 @@ const Login:React.FC=()=>{
           
           <div className="form-container-login">
             <div>
+              
               <h1 className="form-title">LogIn</h1>
               <form id="login-form"  onSubmit={handleSubmit(CheckLogin)}>
 
@@ -104,7 +97,6 @@ const Login:React.FC=()=>{
             </div>
             <img src={BgImg2} className="form-image" alt="" />
           </div>
-
         </div>
      )   
 }

@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
-import './style.css'
+import './style.css';
 import { useNavigate } from "react-router-dom";
-import BgImg from "../assets/img3.png"
+
+
 const Home:React.FC=()=>{
 
     const navigate=useNavigate()
-    
+
     const name:string=localStorage.getItem("username")||"username"
     return(
         <div className="home-page">

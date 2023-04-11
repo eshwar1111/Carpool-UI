@@ -66,11 +66,12 @@
     }
     .form-container-signup{
       width: 100%;
-      height: fit-content;
       overflow: visible;
     }
    
-    
+    .form1-image{
+      display: none;
+    }
     .sub-heading{
       margin-bottom: 40px;
     }

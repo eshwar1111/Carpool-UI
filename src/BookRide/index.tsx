@@ -5,7 +5,7 @@ import BookRideRight from "./BookRight";
 import Navbar from "../Navbar";
 import { useNavigate } from "react-router-dom";
 import "./style.css"
-import PopUp from "./PopUp";
+import { BookTheRideApiHelper } from "../Utils/ApiCalls";
 import {baseUrl} from "../../package.json"
 
 
@@ -25,17 +25,9 @@ const BookRide:React.FC=()=>{
     const navigate=useNavigate()
 
     const bookTheRide=async(ride:any)=>{
-        const url=baseUrl+"bookRide/bookTheRide?UserId="+localStorage.getItem("userid") || "1"
         try{
-            const response=await fetch(url,{method:"POST",
-            headers: {
-            Accept: 'application.json',
-            'Content-Type': 'application/json'
-            },
-            body:JSON.stringify(ride)
-            })
+            const response=await BookTheRideApiHelper(ride)
             var ok=await response.json()
-            console.log(ok)
             if(ok){
                 navigate("/home")
             }

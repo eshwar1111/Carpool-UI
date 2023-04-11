@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar";
 import HistoryideTile from "./HistoryRideTile";
 import "./style.css"
-import {baseUrl} from "../../package.json"
-import { DistributeVertical } from "react-bootstrap-icons";
+import { GetBookedRidesApiHelper,GetOfferedRidesApiHelper } from "../Utils/ApiCalls";
 
 
 const MyRides:React.FC=()=>{
@@ -31,10 +30,8 @@ const MyRides:React.FC=()=>{
     }
 
     const getBookedRides=async()=>{
-
-        const url=baseUrl+"history/BookedRides?UserId="+localStorage.getItem("userid")
         try{
-            const response=await fetch(url)
+            const response=await GetBookedRidesApiHelper()
             const ok=await response.json()
             setBookedRides(ok)
             return ok
@@ -45,10 +42,8 @@ const MyRides:React.FC=()=>{
     }
 
     const  getOfferedRides=async()=>{
-        const url=baseUrl+"history/OfferedRides?UserId="+localStorage.getItem("userid")
         try{
-            const response=await fetch(url)
-           
+            const response=await GetOfferedRidesApiHelper()
             var ok=await response.json()
             setOfferedRides(ok)
             return ok
